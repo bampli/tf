@@ -16,9 +16,7 @@ LABEL mantainer="Jose Motta <josemotta@bampli.com>" \
     org.label-schema.version=$VERSION \
     org.label-schema.schema-version="1.0"
 
-RUN apt-get –purge remove python3.5-minimal && \
-    sudo apt-get –purge remove python3-minimal && \
-    sudo apt-get autoremove –purge
+RUN apt-get purge python3.5-minimal python3-minimal
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libatlas-base-dev \
