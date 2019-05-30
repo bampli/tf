@@ -1,4 +1,4 @@
-ARG BASEIMAGE=ubuntu:16.04
+ARG BASEIMAGE=schachr/raspbian-stretch:latest
 FROM ${BASEIMAGE}
 
 ARG BUILD_DATE
