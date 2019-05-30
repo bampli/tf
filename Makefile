@@ -2,15 +2,16 @@ SNAME ?= tf
 NAME ?= josemotta/$(SNAME)
 VER ?= `cat VERSION`-`cat VERSIONOCV`
 BASE ?= tensorflow-diy
-BASENAME ?= ubuntu:16.04
 ARCH2 ?= armv7l
 GOARCH := $(shell uname -m)
 ifeq ($(GOARCH),x86_64)
 	GOARCH := amd64
+	BASENAME ?= ubuntu:16.04
 endif
-
+ifeq ($(GOARCH),armv7l)
+	BASENAME ?= schachr/raspbian-stretch:latest
+endif
 TFURL ?=tensorflow==$(VER)
-
 
 # HELP
 # This will output the help for each task
