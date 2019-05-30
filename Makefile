@@ -2,18 +2,13 @@ SNAME ?= tf
 NAME ?= josemotta/$(SNAME)
 VER ?= `cat VERSION`-`cat VERSIONOCV`
 BASE ?= tensorflow-diy
-BASENAME ?= josemotta/$(BASE)
+BASENAME ?= ubuntu:16.04
 ARCH2 ?= armv7l
 GOARCH := $(shell uname -m)
 ifeq ($(GOARCH),x86_64)
 	GOARCH := amd64
 endif
 
-
-SNAME ?= tensorflow-diy
-NAME ?= elswork/$(SNAME)
-BASENAME ?= ubuntu:16.04
-VER ?= `cat VERSION`
 TFURL ?=tensorflow==$(VER)
 
 
@@ -37,7 +32,7 @@ debug: ## Build the container
 build: ## Build the container
 	docker build --no-cache -t $(NAME):$(GOARCH) --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 	--build-arg VCS_REF=`git rev-parse --short HEAD` \
-	--build-arg BASEIMAGE=$(BASENAME):$(GOARCH)_`cat VERSION` \
+	--build-arg BASEIMAGE=$(BASENAME) \
 	--build-arg VERSION=$(SNAME)_$(GOARCH)_$(VER) . > ../builds/$(SNAME)_$(GOARCH)_$(VER)_`date +"%Y%m%d_%H%M%S"`.txt
 tag: ## Tag the container
 	docker tag $(NAME):$(GOARCH) $(NAME):$(GOARCH)_$(VER)
