@@ -1,4 +1,4 @@
-SNAME ?= tf-opencv
+SNAME ?= tf
 NAME ?= josemotta/$(SNAME)
 VER ?= `cat VERSION`-`cat VERSIONOCV`
 BASE ?= tensorflow-diy
@@ -8,6 +8,14 @@ GOARCH := $(shell uname -m)
 ifeq ($(GOARCH),x86_64)
 	GOARCH := amd64
 endif
+
+
+SNAME ?= tensorflow-diy
+NAME ?= elswork/$(SNAME)
+BASENAME ?= ubuntu:16.04
+VER ?= `cat VERSION`
+TFURL ?=tensorflow==$(VER)
+
 
 # HELP
 # This will output the help for each task

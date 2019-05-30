@@ -8,10 +8,10 @@ ARG TFVERSION
 LABEL mantainer="Jose Motta <josemotta@bampli.com>" \
     org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.name="tf" \
-    org.label-schema.description="OpenCV-Tensorflow-Python3.7 for amd64 and arm32v7" \
+    org.label-schema.description="OpenCV-Tensorflow-Python3.7 for amd64 & arm32v7" \
     org.label-schema.url="https://bampli.com" \
     org.label-schema.vcs-ref=$VCS_REF \
-    org.label-schema.vcs-url="https://github.com/bampli/tf-opencv" \
+    org.label-schema.vcs-url="https://github.com/bampli/tf" \
     org.label-schema.vendor="bAmpli" \
     org.label-schema.version=$VERSION \
     org.label-schema.schema-version="1.0"
@@ -49,7 +49,8 @@ RUN sudo rm -r Python-3.7.3 \
 ARG WHL_FILE=tensorflow==$TFVERSION
 
 RUN python3 -m pip install --upgrade pip setuptools && \
-    pip3 --no-cache-dir install --user --upgrade $WHL_FILE 
+    pip3 --no-cache-dir install --user --upgrade $WHL_FILE && \
+    pip3 install keras numpy pillow
 
 ARG TF="https://storage.googleapis.com/tensorflow-nightly/tensorflow-1.10.0-cp34-none-linux_armv7l.whl"
 
