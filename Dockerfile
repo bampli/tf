@@ -16,6 +16,10 @@ LABEL mantainer="Jose Motta <josemotta@bampli.com>" \
     org.label-schema.version=$VERSION \
     org.label-schema.schema-version="1.0"
 
+RUN apt-get –purge remove python3.5-minimal && \
+    sudo apt-get –purge remove python3-minimal && \
+    sudo apt-get autoremove –purge
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libatlas-base-dev \
     python3-dev python3-pip python3-h5py \
@@ -30,20 +34,20 @@ RUN mkdir -p $HOME/.config/pip && \
     echo "[global]" >> $HOME/.config/pip/pip.conf && \
     echo "extra-index-url=https://www.piwheels.org/simple" >> $HOME/.config/pip/pip.conf
  
-RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz \
-    tar xf Python-3.7.3.tar.xz \
-    cd Python-3.7.3 \
-    ./configure \
-    make \
+RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz && \
+    tar xf Python-3.7.3.tar.xz && \
+    cd Python-3.7.3 && \
+    ./configure && \
+    make && \
     sudo make altinstall
 
-RUN sudo rm -r Python-3.7.3 \
-    rm Python-3.7.3.tar.xz \
-    sudo apt-get --purge remove build-essential tk-dev \
-    sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev \
-    sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev \
-    sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev \
-    sudo apt-get autoremove \
+RUN sudo rm -r Python-3.7.3 && \
+    rm Python-3.7.3.tar.xz && \
+    sudo apt-get --purge remove build-essential tk-dev && \
+    sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev && \
+    sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev && \
+    sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev && \
+    sudo apt-get autoremove && \
     sudo apt-get clean
 
 ARG WHL_FILE=tensorflow==$TFVERSION
