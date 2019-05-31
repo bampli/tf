@@ -44,12 +44,11 @@ RUN rm -r Python-3.7.3 && \
     apt-get clean
 
 ARG WHL_FILE=tensorflow==$TFVERSION
+ARG TF=="https://storage.googleapis.com/tensorflow-nightly/tensorflow-1.10.0-cp34-none-linux_armv7l.whl"
 
 RUN python3 -m pip install --upgrade pip setuptools && \
-    pip3 --no-cache-dir install --user --upgrade $WHL_FILE && \
+    pip3 --no-cache-dir install --user --upgrade $TF && \
     pip3 install keras numpy pillow
-
-ARG TF="https://storage.googleapis.com/tensorflow-nightly/tensorflow-1.10.0-cp34-none-linux_armv7l.whl"
 
 WORKDIR /
 ENV OPENCV_VERSION="3.4.3"

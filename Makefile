@@ -1,13 +1,14 @@
 SNAME ?= tf
 NAME ?= josemotta/$(SNAME)
-VER ?= `cat VERSION`-`cat VERSIONOCV`
+VER ?= `cat VERSION-TF`-`cat VERSION-OCV`
+TFVERSION ?= `cat VERSION-TF`
 ARCH2 ?= armv7l
-GOARCH := $(shell uname -m)
-ifeq ($(GOARCH),x86_64)
-	GOARCH := amd64
+PLATFORM := $(shell uname -m)
+ifeq ($(PLATFORM),x86_64)
+	PLATFORM := amd64
 	BASENAME ?= ubuntu:16.04
 endif
-ifeq ($(GOARCH),armv7l)
+ifeq ($(PLATFORM),armv7l)
 	BASENAME ?= arm32v7/debian:stretch-slim
 endif
 
@@ -24,34 +25,31 @@ help: ## This help.
 # DOCKER TASKS
 # Build the container
 
-debug: ## Build the container
-	docker build -t $(NAME):$(GOARCH) \
-	--build-arg BASEIMAGE=$(BASENAME):$(GOARCH)_`cat VERSION` \
-	--build-arg VERSION=$(SNAME)_$(GOARCH)_$(VER) .
 build: ## Build the container
-	docker build --no-cache -t $(NAME):$(GOARCH) --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+	docker build --no-cache -t $(NAME):$(PLATFORM) --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 	--build-arg VCS_REF=`git rev-parse --short HEAD` \
+	--build-arg TFVERSION=$(TFVERSION) \
 	--build-arg BASEIMAGE=$(BASENAME) \
-	--build-arg VERSION=$(SNAME)_$(GOARCH)_$(VER) . > ../builds/$(SNAME)_$(GOARCH)_$(VER)_`date +"%Y%m%d_%H%M%S"`.txt
+	--build-arg VERSION=$(SNAME)_$(PLATFORM)_$(VER) . > ../builds/$(SNAME)_$(PLATFORM)_$(VER)_`date +"%Y%m%d_%H%M%S"`.txt
 tag: ## Tag the container
-	docker tag $(NAME):$(GOARCH) $(NAME):$(GOARCH)_$(VER)
+	docker tag $(NAME):$(PLATFORM) $(NAME):$(PLATFORM)_$(VER)
 push: ## Push the container
-	docker push $(NAME):$(GOARCH)_$(VER)
-	docker push $(NAME):$(GOARCH)	
+	docker push $(NAME):$(PLATFORM)_$(VER)
+	docker push $(NAME):$(PLATFORM)	
 deploy: build tag push
 manifest: ## Create an push manifest
-	docker manifest create $(NAME):$(VER) $(NAME):$(GOARCH)_$(VER) $(NAME):$(ARCH2)_$(VER)
+	docker manifest create $(NAME):$(VER) $(NAME):$(PLATFORM)_$(VER) $(NAME):$(ARCH2)_$(VER)
 	docker manifest push --purge $(NAME):$(VER)
-	docker manifest create $(NAME):latest $(NAME):$(GOARCH) $(NAME):$(ARCH2)
+	docker manifest create $(NAME):latest $(NAME):$(PLATFORM) $(NAME):$(ARCH2)
 	docker manifest push --purge $(NAME):latest
 start: ## Start the container
-	docker run -it $(NAME):$(GOARCH)
+	docker run -it $(NAME):$(PLATFORM)
 test: 
-	docker run -it --rm $(NAME):$(GOARCH) \
+	docker run -it --rm $(NAME):$(PLATFORM) \
 	python3 -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
 test2: 
-	docker run -it --rm $(NAME):$(GOARCH) \
+	docker run -it --rm $(NAME):$(PLATFORM) \
 	python3 -c "import tensorflow as tf; print(tf.__version__)"
 test3: 
-	docker run -it --rm $(NAME):$(GOARCH) \
+	docker run -it --rm $(NAME):$(PLATFORM) \
 	python3 -c "import cv2; cv2.__version__"

@@ -3,12 +3,10 @@
 A [Docker](http://docker.com) file to build images for AMD & ARM devices over a base image based with a minimal installation of [Tensorflow](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs.
 Over this base will be installed [OpenCV](https://opencv.org/) a library of programming functions mainly aimed at real-time computer vision.
 
-> Be aware! You should read carefully the usage documentation of every tool!
-
-## Details
+## Based on previous work by Eloy Lopez
 
 - [GitHub](https://github.com/DeftWork/tf-opencv)
-- [Deft.Work my personal blog](http://deft.work/tensorflow_for_raspberry)
+- [Deft.Work blog](http://deft.work/tensorflow_for_raspberry)
 
 
 | Docker Hub | Docker Pulls | Docker Stars | Docker Build | Size/Layers |
