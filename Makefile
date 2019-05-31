@@ -1,7 +1,7 @@
 SNAME ?= tf
 NAME ?= josemotta/$(SNAME)
 VER ?= `cat VERSION`-`cat VERSIONOCV`
-BASE ?= tensorflow-diy
+#BASE ?= arm64v8/debian
 ARCH2 ?= armv7l
 GOARCH := $(shell uname -m)
 ifeq ($(GOARCH),x86_64)
@@ -9,9 +9,9 @@ ifeq ($(GOARCH),x86_64)
 	BASENAME ?= ubuntu:16.04
 endif
 ifeq ($(GOARCH),armv7l)
-	BASENAME ?= schachr/raspbian-stretch:latest
+	BASENAME ?= arm64v8/debian
 endif
-TFURL ?=tensorflow==$(VER)
+#TFURL ?=tensorflow==$(VER)
 
 # HELP
 # This will output the help for each task

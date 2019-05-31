@@ -35,7 +35,7 @@ RUN mkdir -p $HOME/.config/pip && \
 RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz && \
     tar xf Python-3.7.3.tar.xz && \
     cd Python-3.7.3 && \
-    ./configure --with-ssl && \
+    ./configure && \
     make && \
     sudo make altinstall
 
