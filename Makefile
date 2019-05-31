@@ -8,7 +8,7 @@ ifeq ($(GOARCH),x86_64)
 	BASENAME ?= ubuntu:16.04
 endif
 ifeq ($(GOARCH),armv7l)
-	BASENAME ?= stretch-slim:latest
+	BASENAME ?= arm32v7/debian:stretch-slim
 endif
 
 # HELP

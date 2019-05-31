@@ -1,4 +1,4 @@
-ARG BASEIMAGE=stretch-slim:latest
+ARG BASEIMAGE=arm32v7/debian:stretch-slim
 #ARG BASEIMAGE=schachr/raspbian-stretch:latest
 FROM ${BASEIMAGE}
 
