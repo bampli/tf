@@ -41,11 +41,6 @@ RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz && \
 
 RUN rm -r Python-3.7.3 && \
     rm Python-3.7.3.tar.xz && \
-    apt-get --purge remove build-essential tk-dev && \
-    apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev && \
-    apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev && \
-    apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev && \
-    apt-get autoremove && \
     apt-get clean
 
 ARG WHL_FILE=tensorflow==$TFVERSION
