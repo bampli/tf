@@ -17,11 +17,7 @@ LABEL mantainer="Jose Motta <josemotta@bampli.com>" \
     org.label-schema.version=$VERSION \
     org.label-schema.schema-version="1.0"
 
-RUN apt-get update && \
-    apt-get upgrade && \
-    apt-get dist-upgrade
-
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libatlas-base-dev \
     python3-dev python3-pip python3-h5py \
     build-essential cmake git wget unzip yasm pkg-config \
