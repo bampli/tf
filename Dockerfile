@@ -18,8 +18,9 @@ LABEL mantainer="Jose Motta <josemotta@bampli.com>" \
 
 RUN apt-get update && \
     apt-get upgrade && \
-    apt-get dist-upgrade && \
-    apt-get install -y --no-install-recommends \
+    apt-get dist-upgrade
+
+RUN apt-get install -y --no-install-recommends \
     libatlas-base-dev \
     python3-dev python3-pip python3-h5py \
     build-essential cmake git wget unzip yasm pkg-config \
