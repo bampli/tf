@@ -9,7 +9,7 @@ ARG TFVERSION
 LABEL mantainer="Jose Motta <josemotta@bampli.com>" \
     org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.name="tf" \
-    org.label-schema.description="OpenCV-Tensorflow-Python3.7 for amd64 & arm32v7" \
+    org.label-schema.description="OpenCV-Tensorflow-Python3.7 for arm32v7" \
     org.label-schema.url="https://bampli.com" \
     org.label-schema.vcs-ref=$VCS_REF \
     org.label-schema.vcs-url="https://github.com/bampli/tf" \
