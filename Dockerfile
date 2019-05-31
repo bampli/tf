@@ -1,4 +1,5 @@
-ARG BASEIMAGE=schachr/raspbian-stretch:latest
+ARG BASEIMAGE=arm64v8/debian
+#ARG BASEIMAGE=schachr/raspbian-stretch:latest
 FROM ${BASEIMAGE}
 
 ARG BUILD_DATE
