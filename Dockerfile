@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-dev python3-pip python3-h5py \
     build-essential cmake git wget unzip yasm pkg-config \
     libswscale-dev libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev \
-    libavformat-dev libpq-dev && \
+    libavformat-dev libpq-dev libffi-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -35,7 +35,7 @@ RUN mkdir -p $HOME/.config/pip && \
 RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz && \
     tar xf Python-3.7.3.tar.xz && \
     cd Python-3.7.3 && \
-    ./configure && \
+    ./configure --with-ssl && \
     make && \
     sudo make altinstall
 
