@@ -16,13 +16,15 @@ LABEL mantainer="Jose Motta <josemotta@bampli.com>" \
     org.label-schema.version=$VERSION \
     org.label-schema.schema-version="0.1"
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libatlas-base-dev \
-    python3-dev python3-pip python3-h5py \
-    build-essential cmake git wget unzip yasm pkg-config \
-    libswscale-dev libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev \
-    libavformat-dev libpq-dev \
-    libssl-dev openssl libffi-dev && \
+RUN apt-get update && \
+    apt-get remove python3.5 && \
+    apt-get install -y --no-install-recommends \
+      libatlas-base-dev \
+      python3-dev python3-pip python3-h5py \
+      build-essential cmake git wget unzip yasm pkg-config \
+      libswscale-dev libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev \
+      libavformat-dev libpq-dev \
+      libssl-dev openssl libffi-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
