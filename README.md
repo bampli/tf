@@ -24,6 +24,5 @@ start                          Start the container
 ## Usage Example
 
 ```sh
-make build
 docker run -it josemottalopes/tf:arm32v7
 ```
