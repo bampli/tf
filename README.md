@@ -26,5 +26,6 @@ start                          Start the container
 docker run -it josemottalopes/tf:arm32v7
 ```
 
-Run the docker container and follow instrucions from:
+Run the docker container and follow instrucions from:  
+
 [Cat or Not - An Image Classifier using Python and Keras](https://www.codeproject.com/Articles/4023566/Cat-or-Not-An-Image-Classifier-using-Python-and-Ke)
