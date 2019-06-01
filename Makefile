@@ -34,7 +34,7 @@ push: ## Push the container
 	docker push $(NAME):$(PLATFORM)_$(VER)
 	docker push $(NAME):$(PLATFORM)	
 deploy: build tag push
-manifest: ## Create an push manifest
+manifest: ## Create and push manifest
 	docker manifest create $(NAME):$(VER) $(NAME):$(PLATFORM)_$(VER) $(NAME):$(ARCH2)_$(VER)
 	docker manifest push --purge $(NAME):$(VER)
 	docker manifest create $(NAME):latest $(NAME):$(PLATFORM) $(NAME):$(ARCH2)
