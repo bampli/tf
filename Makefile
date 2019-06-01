@@ -1,5 +1,5 @@
 SNAME ?= tf
-NAME ?= josemotta/$(SNAME)
+NAME ?= josemottalopes/$(SNAME)
 VER ?= `cat VERSION-TF`-`cat VERSION-OCV`
 TFVERSION ?= `cat VERSION-TF`
 ARCH2 ?= armv7l

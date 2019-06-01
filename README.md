@@ -20,5 +20,5 @@ Build for amd64 or arm32v7 architecture (thanks to its [Multi-Arch](https://blog
 ## Usage Example
 
 ```sh
-docker run -it josemotta/tf:latest
+docker run -it josemottalopes/tf:arm32v7
 ```
