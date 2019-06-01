@@ -43,12 +43,12 @@ manifest: ## Create and push manifest
 	docker manifest push --purge $(NAME):latest
 start: ## Start the container
 	docker run -it $(NAME):$(PLATFORM)
-test: 
+test1: 
 	docker run -it --rm $(NAME):$(PLATFORM) \
-	python3 -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+	python3.7 -c "import tensorflow as tf; print(tf.__version__)"
 test2: 
 	docker run -it --rm $(NAME):$(PLATFORM) \
-	python3 -c "import tensorflow as tf; print(tf.__version__)"
-test3: 
-	docker run -it --rm $(NAME):$(PLATFORM) \
-	python3 -c "import cv2; cv2.__version__"
+	python3.7 -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+# test3: 
+# 	docker run -it --rm $(NAME):$(PLATFORM) \
+# 	python3.7 -c "import cv2; cv2.__version__"
