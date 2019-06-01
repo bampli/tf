@@ -47,8 +47,10 @@ RUN mkdir -p $HOME/.config/pip && \
 
 ARG WHL_FILE=tensorflow==$TFVERSION
 RUN python3 -m pip install --upgrade pip setuptools && \
-    pip3 --no-cache-dir install --target=/usr/local/bin --upgrade $WHL_FILE && \
-    pip3 install keras numpy pillow
+    pip3 --no-cache-dir install --target=/usr/local/bin --upgrade $WHL_FILE
+RUN pip3 install keras
+RUN pip3 install pillow
+RUN pip3 install numpy
 
 WORKDIR /
 ENV OPENCV_VERSION="3.4.3"
