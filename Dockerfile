@@ -46,8 +46,8 @@ RUN mkdir -p $HOME/.config/pip && \
     echo "extra-index-url=https://www.piwheels.org/simple" >> $HOME/.config/pip/pip.conf
 
 ARG WHL_FILE=tensorflow==$TFVERSION
-RUN python3 -m pip install --upgrade pip setuptools && \
-    pip3 --no-cache-dir install --target=/usr/local/bin --upgrade $WHL_FILE
+RUN python3.7 -m pip install --upgrade pip setuptools && \
+    pip --no-cache-dir install --target=/usr/local/bin --upgrade $WHL_FILE
 # RUN pip3 install keras
 # RUN pip3 install pillow
 # RUN pip3 install numpy
