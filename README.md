@@ -20,8 +20,11 @@ manifest                       Create an push manifest
 start                          Start the container  
 ```
 
-## Typical Usage
+## Typical Usages
 
 ```sh
 docker run -it josemottalopes/tf:arm32v7
 ```
+
+Run the docker container and follow instrucions from:
+[Cat or Not - An Image Classifier using Python and Keras](https://www.codeproject.com/Articles/4023566/Cat-or-Not-An-Image-Classifier-using-Python-and-Ke)
