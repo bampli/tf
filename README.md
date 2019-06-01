@@ -20,7 +20,7 @@ manifest                       Create an push manifest
 start                          Start the container  
 ```
 
-## Typical Usages
+## Typical Usage
 
 ```sh
 docker run -it josemottalopes/tf:arm32v7
