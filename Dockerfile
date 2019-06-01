@@ -1,5 +1,7 @@
 ARG BASEIMAGE=arm32v7/debian:stretch-slim
-#ARG BASEIMAGE=schachr/raspbian-stretch:latest
+ARG TF=="https://storage.googleapis.com/tensorflow-nightly/tensorflow-1.10.0-cp34-none-linux_armv7l.whl"
+#ARG WHL_FILE=tensorflow==$TFVERSION
+
 FROM ${BASEIMAGE}
 
 ARG BUILD_DATE
@@ -41,14 +43,13 @@ RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz && \
 
 RUN rm -r Python-3.7.3 && \
     rm Python-3.7.3.tar.xz && \
-    apt-get clean
-
-ARG WHL_FILE=tensorflow==$TFVERSION
-ARG TF=="https://storage.googleapis.com/tensorflow-nightly/tensorflow-1.10.0-cp34-none-linux_armv7l.whl"
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --upgrade pip setuptools && \
-    pip3 --no-cache-dir install --user --upgrade $TF && \
-    pip3 install keras numpy pillow
+    pip3 --no-cache-dir install --user --upgrade ${TF}
+    
+RUN pip3 install keras numpy pillow
 
 WORKDIR /
 ENV OPENCV_VERSION="3.4.3"
