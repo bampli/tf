@@ -1,4 +1,4 @@
-# OpenCV + Tensorflow
+# OpenCV + Tensorflow at Raspberry Pi 3B+
 
 A [Docker](http://docker.com) file to build images for AMD & ARM devices over a base image based with a minimal installation of [Tensorflow](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs. Also installed [OpenCV](https://opencv.org/) a library of programming functions mainly aimed at real-time computer vision. Upgrade to Python3.7, keeping the default Python3.5.
 
