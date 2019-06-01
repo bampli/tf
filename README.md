@@ -11,13 +11,13 @@ Based on previous work by Eloy Lopez, ver [blog](http://deft.work/tensorflow_for
 
 ## Build Instructions
 
-> make
-help                           This help.
-build                          Build the container
-tag                            Tag the container
-push                           Push the container
-manifest                       Create an push manifest
-start                          Start the container
+> make  
+help                           This help.  
+build                          Build the container  
+tag                            Tag the container  
+push                           Push the container  
+manifest                       Create an push manifest  
+start                          Start the container  
 
 ## Usage Example
 
