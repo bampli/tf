@@ -22,9 +22,6 @@ help: ## This help.
 
 .DEFAULT_GOAL := help
 
-# DOCKER TASKS
-# Build the container
-
 build: ## Build the container
 	docker build --no-cache -t $(NAME):$(PLATFORM) --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 	--build-arg VCS_REF=`git rev-parse --short HEAD` \
