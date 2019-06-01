@@ -23,11 +23,13 @@ help: ## This help.
 .DEFAULT_GOAL := help
 
 build: ## Build the container
-	docker build --no-cache -t $(NAME):$(PLATFORM) --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+	docker build --no-cache -t $(NAME):$(PLATFORM) \
+	--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 	--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	--build-arg TFVERSION=$(TFVERSION) \
 	--build-arg BASEIMAGE=$(BASENAME) \
-	--build-arg VERSION=$(SNAME)_$(PLATFORM)_$(VER) . > ../builds/$(SNAME)_$(PLATFORM)_$(VER)_`date +"%Y%m%d_%H%M%S"`.txt
+	--build-arg VERSION=$(SNAME)_$(PLATFORM)_$(VER) \
+	. > ../builds/$(SNAME)_$(PLATFORM)_$(VER)_`date +"%Y%m%d_%H%M%S"`.txt
 tag: ## Tag the container
 	docker tag $(NAME):$(PLATFORM) $(NAME):$(PLATFORM)_$(VER)
 push: ## Push the container
