@@ -28,12 +28,14 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+WORKDIR /
 RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz && \
     tar xf Python-3.7.3.tar.xz && \
     cd Python-3.7.3 && \
     ./configure && \
     make && \
     make altinstall && \
+    cd .. && \
     rm -r Python-3.7.3 && \
     rm Python-3.7.3.tar.xz && \
     apt-get clean && \
