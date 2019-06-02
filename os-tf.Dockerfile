@@ -34,7 +34,7 @@ FROM ${BASEIMAGE}
 #     echo "extra-index-url=https://www.piwheels.org/simple" >> $HOME/.config/pip/pip.conf
 
 ARG H5PY="https://files.pythonhosted.org/packages/43/27/a6e7dcb8ae20a4dbf3725321058923fec262b6f7835179d78ccc8d98deec/h5py-2.9.0.tar.gz"
-RUN pip3 install --no-binary=h5py $H5PY
+RUN pip3 install -v --no-binary=h5py --target=/usr/local/bin $H5PY
 
 ARG WHL_FILE=tensorflow==1.13.1
 RUN python3.7 -m pip install --upgrade pip setuptools && \
