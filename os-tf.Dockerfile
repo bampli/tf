@@ -28,6 +28,6 @@ FROM ${BASEIMAGE}
 #     apt-get clean && \
 #     rm -rf /var/lib/apt/lists/*
 
-ARG WHL_FILE=tensorflow==$TFVERSION
+ARG WHL_FILE=tensorflow==1.13.1
 RUN python3.7 -m pip install --upgrade pip setuptools && \
     pip3 --no-cache-dir install --target=/usr/local/bin --upgrade $WHL_FILE 
