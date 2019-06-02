@@ -37,5 +37,5 @@ FROM ${BASEIMAGE}
 # RUN pip3 install -v --no-binary=h5py --target=/usr/local/bin --upgrade-strategy=only-if-needed $H5PY
 
 ARG WHL_FILE=tensorflow==1.13.1
-RUN python3.7 -m pip install --upgrade-strategy=only-if-needed pip setuptools && \
+RUN python3.7 -m pip install --upgrade-strategy=eager pip setuptools && \
     pip3 -v --no-cache-dir install --target=/usr/local/bin --upgrade-strategy=only-if-needed $WHL_FILE 
