@@ -46,7 +46,7 @@ RUN mkdir -p $HOME/.config/pip && \
 
 ARG WHL_FILE=tensorflow==$TFVERSION
 RUN python3.7 -m pip install --upgrade pip setuptools && \
-    pip3 --no-cache-dir install --user --upgrade $WHL_FILE 
+    pip3 --no-cache-dir install --target=/usr/local/bin --upgrade $WHL_FILE 
 
 #RUN pip3 --no-cache-dir install --target=/usr/local/bin --upgrade $WHL_FILE
 # RUN pip3 install keras
