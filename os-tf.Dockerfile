@@ -1,4 +1,4 @@
-ARG BASEIMAGE=josemottalopes/os-py:armv71
+ARG BASEIMAGE=josemottalopes/os-py:latest
 FROM ${BASEIMAGE}
 
 # ARG BUILD_DATE
@@ -37,5 +37,5 @@ FROM ${BASEIMAGE}
 # RUN pip3 install -v --no-binary=h5py --target=/usr/local/bin --upgrade-strategy=only-if-needed $H5PY
 
 ARG WHL_FILE=tensorflow==1.13.1
-RUN python3.7 -m pip install --upgrade pip setuptools && \
-    pip3 -v --no-cache-dir install --target=/usr/local/bin --upgrade-strategy=only-if-needed $WHL_FILE 
+RUN python3 -m pip install --upgrade pip setuptools && \
+    pip3 --no-cache-dir install --target=/usr/local/bin --upgrade-strategy=only-if-needed $WHL_FILE 
