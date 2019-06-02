@@ -43,3 +43,5 @@ RUN mkdir -p $HOME/.config/pip && \
     touch $HOME/.config/pip/pip.conf && \
     echo "[global]" >> $HOME/.config/pip/pip.conf && \
     echo "extra-index-url=https://www.piwheels.org/simple" >> $HOME/.config/pip/pip.conf
+
+RUN python3 -m pip install --upgrade pip setuptools
