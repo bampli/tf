@@ -16,11 +16,10 @@ FROM ${BASEIMAGE}
 #     org.label-schema.version=$VERSION \
 #     org.label-schema.schema-version="0.1"
 
-#      python3-dev python3-pip python3-h5py \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       libatlas-base-dev \
-      python3-pip python3-h5py \
+      python3-dev python3-pip python3-h5py \
       build-essential cmake git wget unzip yasm pkg-config \
       libswscale-dev libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev \
       libavformat-dev libpq-dev \
