@@ -38,4 +38,4 @@ FROM ${BASEIMAGE}
 
 ARG WHL_FILE=tensorflow==1.13.1
 RUN python3 -m pip install --upgrade pip setuptools && \
-    pip3 --no-cache-dir install --target=/usr/local/bin --upgrade-strategy=only-if-needed $WHL_FILE 
+    pip3 --no-cache-dir install --target=/usr/local --upgrade-strategy=only-if-needed $WHL_FILE 
