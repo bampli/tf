@@ -20,10 +20,10 @@ ARG TF_WHL="https://github.com/lhelontra/tensorflow-on-arm/releases/download/v1.
 ARG TF="tensorflow-1.9.0-cp35-none-linux_armv7l.whl"
 
 WORKDIR /
-RUN sudo apt-get update && \
-    sudo apt-get clean && \
+RUN apt-get update && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    sudo apt install libatlas-base-dev
+    apt install libatlas-base-dev
 
 RUN mkdir ~/downloads && \
     cd ~/downloads && \
