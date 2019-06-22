@@ -23,7 +23,7 @@ WORKDIR /
 RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    apt install libatlas-base-dev
+    apt-get install libatlas-base-dev
 
 RUN mkdir ~/downloads && \
     cd ~/downloads && \
