@@ -23,10 +23,9 @@ WORKDIR /
 RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    apt-get install libatlas-base-dev
+    apt install libatlas-base-dev
 
-RUN mkdir ~/downloads && \
-    cd ~/downloads && \
+RUN cd ~ && \
     wget $TF_WHL && \
     pip3 install $TF 
 
